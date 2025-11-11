@@ -1,0 +1,11 @@
+# Jangan commit file sensitive
+.env
+node_modules/
+*.log
+.DS_Store
+package-lock.json
+
+# Backup files
+*.bak
+*.old
+config.js

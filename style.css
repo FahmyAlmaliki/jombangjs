@@ -1,0 +1,396 @@
+/* Reset dan Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0f1419;
+    --bg-secondary: #1a1f2e;
+    --bg-card: #1e2433;
+    --accent-primary: #00d9ff;
+    --accent-secondary: #7b2ff7;
+    --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b8c1;
+    --text-muted: #6b7280;
+    --border-color: #2d3748;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --glow-blue: 0 0 20px rgba(0, 217, 255, 0.3);
+    --glow-purple: 0 0 20px rgba(123, 47, 247, 0.3);
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(123, 47, 247, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(0, 217, 255, 0.05) 0px, transparent 50%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    position: relative;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    padding: 40px 0;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    box-shadow: var(--glow-blue);
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+header .container {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    text-shadow: var(--glow-blue);
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5)); }
+    50% { filter: drop-shadow(0 0 20px rgba(123, 47, 247, 0.5)); }
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Main Content */
+main {
+    padding-bottom: 60px;
+}
+
+/* Chart Section Styles */
+.chart-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.chart-section:hover::before {
+    opacity: 1;
+}
+
+.chart-section:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), var(--glow-blue);
+    border-color: rgba(0, 217, 255, 0.3);
+}
+
+.chart-header {
+    margin-bottom: 25px;
+    border-left: 4px solid transparent;
+    border-image: var(--accent-gradient);
+    border-image-slice: 1;
+    padding-left: 20px;
+    position: relative;
+}
+
+.chart-header::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--accent-gradient);
+    box-shadow: var(--glow-blue);
+}
+
+.chart-header h2 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.chart-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Chart Container */
+.chart-container {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    border-color: rgba(0, 217, 255, 0.2);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), var(--glow-blue);
+}
+
+.chart-container iframe {
+    display: block;
+    border: none;
+    min-height: 450px;
+    background: transparent;
+}
+
+/* Loading State */
+.chart-container.loading {
+    position: relative;
+}
+
+.chart-container.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Footer Styles */
+footer {
+    background: var(--bg-secondary);
+    border-top: 2px solid var(--border-color);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    box-shadow: var(--glow-purple);
+}
+
+footer p {
+    color: var(--text-secondary);
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+footer p:first-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Stats Bar (Optional Enhancement) */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-blue);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 30px 0;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .chart-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .chart-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .chart-container iframe {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .chart-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+    
+    .chart-section {
+        padding: 15px;
+    }
+    
+    .chart-container iframe {
+        min-height: 300px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 10px;
+    border: 2px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00b8d4, #6a1b9a);
+    box-shadow: var(--glow-blue);
+}
+
+/* Selection */
+::selection {
+    background: rgba(0, 217, 255, 0.3);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: rgba(0, 217, 255, 0.3);
+    color: var(--text-primary);
+}
+
+/* Smooth Animations */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Grid Layout for larger screens */
+@media (min-width: 1400px) {
+    .chart-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .chart-section {
+        margin-bottom: 0;
+    }
+}

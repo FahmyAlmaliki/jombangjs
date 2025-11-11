@@ -1,0 +1,16 @@
+{
+  "name": "jombang-weather-monitoring",
+  "version": "1.0.0",
+  "description": "Sistem Monitoring Cuaca - Jombang Weather Station",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["weather", "monitoring", "dashboard"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
