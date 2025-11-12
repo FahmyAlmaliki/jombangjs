@@ -14,6 +14,29 @@
         </div>
     </header>
 
+    <!-- Time Range Selector -->
+    <div class="time-range-container">
+        <div class="container">
+            <div class="time-range-selector">
+                <label for="timeRange">📅 Rentang Waktu:</label>
+                <select id="timeRange">
+                    <option value="now-15m">15 Menit Terakhir</option>
+                    <option value="now-30m">30 Menit Terakhir</option>
+                    <option value="now-1h">1 Jam Terakhir</option>
+                    <option value="now-3h">3 Jam Terakhir</option>
+                    <option value="now-6h" selected>6 Jam Terakhir</option>
+                    <option value="now-12h">12 Jam Terakhir</option>
+                    <option value="now-24h">24 Jam Terakhir</option>
+                    <option value="now-2d">2 Hari Terakhir</option>
+                    <option value="now-7d">7 Hari Terakhir</option>
+                    <option value="now-30d">30 Hari Terakhir</option>
+                </select>
+                <button id="refreshBtn" class="refresh-btn">🔄 Refresh</button>
+                <span id="lastUpdate" class="last-update"></span>
+            </div>
+        </div>
+    </div>
+
     <main class="container">
         <!-- Curah Hujan -->
         <section class="chart-section">

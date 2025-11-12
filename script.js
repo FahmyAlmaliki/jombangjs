@@ -1,3 +1,9 @@
+// Current time range (default from config)
+let currentTimeRange = {
+    from: grafanaConfig.timeRange.from,
+    to: grafanaConfig.timeRange.to
+};
+
 // Fungsi untuk membuat iframe dengan URL dari config
 function createIframe(panelKey, panelId) {
     const iframe = document.createElement('iframe');
@@ -9,6 +15,20 @@ function createIframe(panelKey, panelId) {
     
     return iframe;
 }
+
+// Override generateEmbedUrl to use current time range
+window.generateEmbedUrl = function(panelId) {
+    const params = new URLSearchParams({
+        orgId: '1',
+        panelId: panelId,
+        theme: grafanaConfig.theme,
+        from: currentTimeRange.from,
+        to: currentTimeRange.to,
+        refresh: '30s'
+    });
+    
+    return `${grafanaConfig.baseUrl}/d-solo/${grafanaConfig.dashboardId}/${grafanaConfig.dashboardName}?${params}`;
+};
 
 // Fungsi untuk load semua iframe
 function loadAllIframes() {
@@ -47,10 +67,31 @@ function loadAllIframes() {
 function refreshDashboard() {
     const iframes = document.querySelectorAll('iframe[data-panel-key]');
     iframes.forEach(iframe => {
-        const src = iframe.src;
-        iframe.src = src;
+        const panelKey = iframe.getAttribute('data-panel-key');
+        const panelConfig = grafanaConfig.panels[panelKey];
+        if (panelConfig && panelConfig.id) {
+            iframe.src = generateEmbedUrl(panelConfig.id);
+        }
     });
+    updateLastRefreshTime();
     console.log('Dashboard refreshed at:', new Date().toLocaleString());
+}
+
+// Function to update time range and refresh
+function updateTimeRange(newRange) {
+    currentTimeRange.from = newRange;
+    currentTimeRange.to = 'now';
+    refreshDashboard();
+}
+
+// Display last update time
+function updateLastRefreshTime() {
+    const lastUpdateEl = document.getElementById('lastUpdate');
+    if (lastUpdateEl) {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('id-ID');
+        lastUpdateEl.textContent = `Terakhir diperbarui: ${timeString}`;
+    }
 }
 
 // Initialize dashboard on page load
@@ -58,9 +99,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load all iframes
     loadAllIframes();
     
+    // Set up time range selector
+    const timeRangeSelect = document.getElementById('timeRange');
+    if (timeRangeSelect) {
+        timeRangeSelect.addEventListener('change', function() {
+            updateTimeRange(this.value);
+        });
+    }
+    
+    // Set up refresh button
+    const refreshBtn = document.getElementById('refreshBtn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', function() {
+            refreshDashboard();
+        });
+    }
+    
+    // Initial last update time
+    updateLastRefreshTime();
+    
     // Set up auto-refresh
     const refreshInterval = grafanaConfig.refreshInterval || 300000;
-    setInterval(refreshDashboard, refreshInterval);
+    setInterval(function() {
+        refreshDashboard();
+    }, refreshInterval);
 });
 
 // Add smooth scroll behavior
@@ -79,9 +141,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Display last update time
 function updateLastRefreshTime() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('id-ID');
-    console.log('Last refresh:', timeString);
+    const lastUpdateEl = document.getElementById('lastUpdate');
+    if (lastUpdateEl) {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('id-ID');
+        lastUpdateEl.textContent = `Terakhir diperbarui: ${timeString}`;
+    }
 }
 
 // Update time on page load and after each refresh

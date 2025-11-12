@@ -37,9 +37,12 @@ sudo systemctl restart grafana-server
 
 - ✅ **Dark Theme** - UI modern dengan tema gelap
 - ✅ **Responsive** - Tampil baik di desktop dan mobile
+- ✅ **Time Range Selector** - Pilih rentang waktu data (15 menit - 30 hari)
+- ✅ **Manual Refresh** - Tombol refresh untuk update data manual
 - ✅ **Auto-refresh** - Update otomatis setiap 5 menit
 - ✅ **Smooth animations** - Hover effects dan transitions
 - ✅ **Obfuscated config** - URL tidak mudah dilihat
+- ✅ **Last Update Time** - Tampilan waktu terakhir data diperbarui
 
 ## 📁 Struktur File
 
