@@ -209,6 +209,31 @@ header h2 {
     transform: translateY(0);
 }
 
+.prediction-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.prediction-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.prediction-btn:active {
+    transform: translateY(0);
+}
+
 .last-update {
     color: var(--text-muted);
     font-size: 0.85rem;
@@ -428,6 +453,10 @@ footer p:first-child {
     }
     
     .refresh-btn {
+        width: 100%;
+    }
+
+    .prediction-btn {
         width: 100%;
     }
     
