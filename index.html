@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Monitoring Cuaca Jombang - Universitas Brawijaya</title>
+    <title>Sistem Monitoring Real Time Desa Ngampungan Jombang - Universitas Brawijaya</title>
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <!-- Favicon (grain/leaf) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌾</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌾</text></svg>">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,11 +17,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Decorative Wave Left -->
+    <div class="wave-decoration wave-left">
+        <svg viewBox="0 0 200 1000" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 Q50,50 0,100 T0,200 T0,300 T0,400 T0,500 T0,600 T0,700 T0,800 T0,900 T0,1000 L0,1000 L0,0 Z" 
+                  fill="url(#gradient-left)" opacity="0.4"/>
+            <path d="M0,50 Q50,100 0,150 T0,250 T0,350 T0,450 T0,550 T0,650 T0,750 T0,850 T0,950 L0,1000 L0,50 Z" 
+                  fill="url(#gradient-left)" opacity="0.3"/>
+            <defs>
+                <linearGradient id="gradient-left" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4caf50;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Decorative Wave Right -->
+    <div class="wave-decoration wave-right">
+        <svg viewBox="0 0 200 1000" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200,0 Q150,50 200,100 T200,200 T200,300 T200,400 T200,500 T200,600 T200,700 T200,800 T200,900 T200,1000 L200,1000 L200,0 Z" 
+                  fill="url(#gradient-right)" opacity="0.4"/>
+            <path d="M200,50 Q150,100 200,150 T200,250 T200,350 T200,450 T200,550 T200,650 T200,750 T200,850 T200,950 L200,1000 L200,50 Z" 
+                  fill="url(#gradient-right)" opacity="0.3"/>
+            <defs>
+                <linearGradient id="gradient-right" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#43a047;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#66bb6a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
     <header>
         <div class="container">
-            <h1>Sistem Monitoring Cuaca Jombang</h1>
+            <h1>Sistem Monitoring Cuaca Real-Time Desa Ngampungan Jombang</h1>
             <h2>Universitas Brawijaya</h2>
-            <p class="subtitle">Pantau Cuaca dari titik manapun</p>
+            <p class="subtitle">Pantau Kondisi Cuaca & Prediksi Cuaca</p>
         </div>
     </header>
 
@@ -108,9 +140,9 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Sistem Monitoring Cuaca - Jombang. All rights reserved. </p>
-            <p>Pantau Cuaca dari titik manapun</p>
+            <div class="container">
+            <p>&copy; 2025 Sistem Monitoring Cuaca Real-Time Desa Ngampungan Jombang - Universitas Brawijaya. All rights reserved.</p>
+            <p>Dari Kampus untuk Negeri: Dukungan Data untuk Pertanian</p>
         </div>
     </footer>
 
